@@ -8,8 +8,22 @@ body {
 }
 
 body.dark-mode {
-  background: #222;
-  color: #fff;
+    --bg-primary: #101014; /* Твій вугільний фон */
+    --text-primary: #fff;
+    --text-secondary: #828282; /* М'який сірий (взято з твого стилю модалки) */
+    --accent-primary: #fff176; /* Жовтий акцент (взято з кнопки "Редактор") */
+    --accent-secondary: #282A30; /* Темний фон для заголовків (взято з модалки) */
+    --card-bg: #1e2023; /* Твій фон для карток/кнопок */
+    --card-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Тінь трохи темніша, щоб було видно */
+    --border-color: #282A30; /* Колір рамок (взято з модалки) */
+    --border-color-darker: #282A30; /* Теж саме */
+    --input-bg: #1e2023; /* Поля вводу = фон карток */
+    --success-bg: #2d5a3a; /* (Поки залишив старі, вони окей) */
+    --success-text: #c3e6cb;
+    --error-bg: #5a2d2d; /* (Поки залишив старі, вони окей) */
+    --error-text: #f5c6cb;
+    --info-bg: #1e2023; /* Як картки */
+    --info-text: #828282; /* Як вторинний текст */
 }
 
 /* Loading spinner */
@@ -788,5 +802,6 @@ body.dark-mode .modal-btn.editor:hover {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
 
 
