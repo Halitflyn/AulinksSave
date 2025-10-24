@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3f51b5">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#333">
+  <title>Розклад занять ІВ-12</title>
+  <!-- Favicon з емодзі 📅 -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>">
+  <!-- PWA Manifest вбудований як data URI -->
+  <link rel="manifest" href="data:application/json;base64,CnsKICAibmFtZSI6ICLQoNC+0LfQutC70LDQtCDQt9Cw0L3Rj9GC0Ywg0IbQki0xMiIsCiAgInNob3J0X25hbWUiOiAi0KDQvtC30LrQu9Cw0LQg0IbQki0xMiIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbCw8c3ZnIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmdcIiB2aWV3Qm94PVwiMCAwIDEwMCAxMDBcIj48dGV4dCB5PVwiLjllbVwiIGZvbnQtc2l6ZT1cIjkwXCI+8J+ThTwvdGV4dD48L3N2Zz4iLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXSwKICAic3RhcnRfdXJsIjogIi4vIiwKICAiZGlzcGxheSI6ICJmdWxsc2NyZWVuIiwKICAidGhlbWVfY29sb3IiOiAiIzNmNTFiNSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2Y0ZjZmYSIKfQo=">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <button class="theme-toggle purple" id="themeBtn"></button>
+
+  <nav id="navigation">
+    <!-- Навігація буде згенерована динамічно -->
+  </nav>
+
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Завантаження розкладу...</p>
+  </div>
+
+  <main id="schedule-container" style="display: none;">
+    <!-- Розклад буде згенерований динамічно з JSON -->
+  </main>
+
+  <!-- Футер з заголовком і фільтрами -->
+  <footer>
+    <h1 id="schedule-title">Розклад занять</h1>
+  <div class="filters">
+      <label>Підгрупа: </label>
+      <select id="subgroupFilter">
+        <option value="all">Усі</option>
+        <option value="sub1">Підгрупа 1</option>
+        <option value="sub2">Підгрупа 2</option>
+      </select>
+      <label style="margin-left: 20px;">
+        <input type="checkbox" id="showAllWeeks"> Показати всі тижні
+      </label>
+      <label style="margin-left: 20px;">
+        <input type="checkbox" id="hideEmptyLessons"> Приховати порожні пари
+      </label>
+      <label style="margin-left: 20px;" id="nextWeekLabel">
+        <input type="checkbox" id="showNextWeek"> Показати наст. тиждень
+      </label>
+      <span id="currentWeekInfo"></span>
+      
+            <button class="settings-btn" id="settingsBtn" title="Налаштування" style="margin-left: 20px;">⚙️ Налаштування</button>
+    </div>
+
+    <!-- Звіти та статистика -->
+    <div class="reports">
+      <h3>📊 Статистика</h3>
+    <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" id="totalLessons">0</div>
+          <div class="stat-label">Всього пар на тиждень</div>
+        </div>
+      </div>
+      
+      <div class="subjects-report">
+        <h4>📚 Предмети по типах занять</h4>
+        <div id="subjectsBreakdown"></div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./script.js"></script>
+  
+  <footer style="text-align: center; padding: 10px; margin-top: 20px;">
+    <p>Сайт створив Halitflyn © 2025</p>
+  </footer>
+
+<div class="modal" id="settingsModal">
+  <div class="modal-content">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <h2>Налаштування розкладу</h2>
+    <p>Ви можете завантажити свій власний файл <code>schedule.json</code>.</p>
+    <p>Якщо у вас немає файлу, ви можете експортувати поточний розклад як шаблон, відредагувати його і завантажити назад.</p>
+    
+    <div class="modal-actions">
+  <input type="file" id="importFile" accept=".json" style="display: none;">
+
+  <a href="./editor.html" class="modal-btn editor" style="text-align: center; text-decoration: none;">Редактор розкладу</a>
+
+  <button class="modal-btn import" id="importBtn">Імпорт (.json)</button>
+  <button class="modal-btn export" id="exportBtn">Експорт (Шаблон)</button>
+  <button class="modal-btn delete" id="deleteBtn">Видалити мій розклад</button>
+</div>
+    <div id="importStatus"></div>
+  </div>
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
